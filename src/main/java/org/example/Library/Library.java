@@ -20,7 +20,7 @@ public class Library {
     public Book getBook(String ISBN){
         for (int i = 0; i < books.size(); i++) {
             if (books.get(i).getISBN().equals(ISBN)) {
-                System.out.println("We found this book with your ISBN number:"+ books.get(i));
+                //System.out.println("We found this book with your ISBN number:"+ books.get(i));
                 return books.get(i);
             }
         }
@@ -35,12 +35,20 @@ public class Library {
 
 
     public void returnBook (Book book) {
-        //kod
+        book.setStatus(BookStatus.Available); // status needs to be set to available since it's returned.
     }
+
     // user as parameter
-    public void borrowBook (Book book) {
-        //book.setStatus();
-        //book.setBorrower(); skapa borrower parameter på Book klassen
-        //kod
+    public void borrowBook (Book book, User user) {
+
+        if(book.getStatus() == BookStatus.Available) {
+
+            book.setStatus(BookStatus.Unavailable);
+            book.setBorrower(user);    //need to add borrower
+
+        } else {
+            System.out.println("Book is already borrowed");
+        }
+
     }
 }

@@ -9,11 +9,12 @@ public class UserService {
 
     public User loggedInUser;
 
+
     public UserService(){
         users = new ArrayList<>();
     }
 
-    public boolean LoginUser(String username, String password){
+    public boolean loginUser(String username, String password){
 
         for (int i = 0; i < users.size(); i++) {
             if (users.get(i).getUsername().equals(username)) {
@@ -27,19 +28,20 @@ public class UserService {
         return false;
     }
 
-
-    /* public void RegisterUser(String username, String password) {
+    // Boolean because either it works or it doesn't
+    public boolean registerUser(String username, String password) {
 
         for (int i = 0; i < users.size(); i++) {
             if (users.get(i).getUsername().equals(username)) {
-
+                return false; // returns false since it already exists
             }
         }
 
+        // if the username does not exist it runs this code instead
         User newUser = new User(username, password);
         users.add(newUser);
+        return true;
 
-
-    } */
+    }
 
 }

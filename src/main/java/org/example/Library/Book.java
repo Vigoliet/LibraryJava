@@ -10,8 +10,15 @@ public class Book {
     private BookStatus status;
     private String ISBN;
 
+    private User borrower;
 
+    public User getBorrower() {
+        return borrower;
+    }
 
+    public void setBorrower(User borrower) {
+        this.borrower = borrower;
+    }
 
     public Book(String title, String author, BookStatus status, String ISBN) {
         this.title = title;
@@ -62,6 +69,7 @@ public class Book {
                 ", author='" + author + '\'' +
                 ", status=" + status +
                 ", ISBN='" + ISBN + '\'' +
+                ", borrower=" + borrower +
                 '}';
     }
 }
